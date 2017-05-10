@@ -1,0 +1,24 @@
+sudo: required
+
+group: bluezone
+
+env:
+  global:
+    - org="automated-test"
+    - cat="sb"
+    - OCTOKIT_API_ENDPOINT: https://github.ibm.com/api/v3/
+  matrix:
+    - policyDir="." policyName="apimockajson" type="json"
+    - policyDir="." policyName="apimockaxml" type="xml"
+
+language: node_js
+node_js:
+  - "4"
+
+before_install:
+  - mkdir tmp || true
+  - mkdir out || true
+  - chmod 755 ./build.sh
+
+script:
+  - ./build.sh $policyDir $policyName
