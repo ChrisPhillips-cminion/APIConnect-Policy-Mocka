@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  x-ibm-name: test-mocka-xml
+  title: Test Mocka XML
+  version: 1.0.0
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /test-mocka-xml
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  clientIdHeader:
+    type: apiKey
+    in: header
+    name: X-IBM-Client-Id
+security:
+  - clientIdHeader: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - apimockaxml:
+          version: 1.0.0
+          responseText: '<Test>testdata</Test>'
+  phase: realized
+paths:
+  /path-1:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+definitions: {}
+tags: []

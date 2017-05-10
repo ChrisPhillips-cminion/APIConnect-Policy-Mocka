@@ -1,0 +1,27 @@
+#      Licensed Materials - Property of IBM
+#
+#      © IBM Corp. 2016
+policy: 1.0.0
+info:
+    title: XML Mocka
+    name: apimockaxml
+    version: 1.0.0
+    description: User Defined Policy to mock an XML response
+    contact:
+        name: Chris Phillips
+        email: chris.phillips@uk.ibm.com
+attach:
+    - rest
+properties:
+    $schema: "http://json-schema.org/draft-04/schema#"
+    type: object
+    properties:
+        responseText:
+            label: XML Response
+            description: The response can contain variables passed in or context variables.
+            type: string
+            format: textarea
+    required:
+        - responseText
+gateways:
+    - datapower-gateway

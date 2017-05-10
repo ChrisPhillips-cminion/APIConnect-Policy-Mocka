@@ -1,0 +1,35 @@
+swagger: '2.0'
+info:
+  x-ibm-name: test-mocka-json
+  title: Test Mocka JSON
+  version: 1.0.0
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /test-mocka-json
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions: {}
+security: []
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  assembly:
+    execute:
+      - apimockajson:
+          version: 1.0.0
+          responseText: '{ "Test JSON" : "JSON TEST" }'
+  gateway: datapower-gateway
+  phase: realized
+paths:
+  /path-1:
+    get:
+      responses:
+        '200':
+          description: 200 OK
+definitions: {}
+tags: []
