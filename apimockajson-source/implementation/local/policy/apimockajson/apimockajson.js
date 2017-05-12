@@ -10,7 +10,8 @@ var apic = require('local://isp/policy/apim.custom.js'),
 
 var data = message.toString();
 console.critical("Returning JSON '" + data + "'");
-var char = data.slice(0, 1);
+
+
 try {
     data = JSON.parse(data);
     var contenttype = 'application/json';
